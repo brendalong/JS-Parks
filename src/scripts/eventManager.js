@@ -1,33 +1,35 @@
 const handleDelete = () => {
-  let parkId = event.target.parentNode.id.split("--")[1];
+    let parkId = event.target.parentNode.id.split("--")[1];
 
-  deletePark(parkId).then(() => listNationalParks());
+    deletePark(parkId).then(() => listNationalParks());
 };
 
 const handleVisited = () => {
     console.log("visited button clicked", event.target.id.split("--")[1]);
 
     let parkId = event.target.id.split("--")[1];
-        console.log("park", parkId);
+    console.log("park", parkId);
     let visitedParkObject = {
         visited: true
     };
 
     patchPark(parkId, visitedParkObject)
-    .then(() => listNationalParks());
+        .then(() => listNationalParks());
 };
 
 
 const handleEdit = () => {
     let parkId = event.target.id.split("--")[1];
 
-    const parkArticle = document.querySelector(`#national-park--${parkId}`);
-    clearElement(parkArticle);
-
     getPark(parkId).then(parkToEdit => {
-        const editFormForPark = parkEditForm(parkToEdit);
-        parkArticle.appendChild(editFormForPark);
+        const editFormForPark = getParkEditForm(parkToEdit);
+        addParkEditForm(editFormForPark, parkId)
+
+        document.querySelectorAll(".update").forEach(btn => {
+            btn.addEventListener("click", handleUpdate);
+        });
     });
+
 };
 
 const handleUpdate = () => {
