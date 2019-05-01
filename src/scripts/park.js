@@ -16,3 +16,20 @@ const buildParkHtml = parkObject => {
 const addToParkContainer = (htmlString, parkId) => {
     $container.innerHTML += htmlString;
 }
+
+const getParkEditForm = (parkObject) => {
+    const form = `
+        <label>Name:</label>
+        <input id="edit-park-name--${parkObject.id}" value="${parkObject.name}">
+        <label>State:</label>
+        <input id="edit-park-state--${parkObject.id}" value="${parkObject.state}">
+        <button id="update--${parkObject.id}" class="update">Update</button>
+    `;
+
+    return form;
+}
+
+const addParkEditForm = (formString, parkId) => {
+    const parkArticle = document.querySelector(`#national-park--${parkId}`);
+    parkArticle.innerHTML = formString;
+}

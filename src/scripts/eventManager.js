@@ -21,13 +21,15 @@ const handleVisited = () => {
 const handleEdit = () => {
     let parkId = event.target.id.split("--")[1];
 
-    const parkArticle = document.querySelector(`#national-park--${parkId}`);
-    clearElement(parkArticle);
-
     getPark(parkId).then(parkToEdit => {
-        const editFormForPark = parkEditForm(parkToEdit);
-        parkArticle.appendChild(editFormForPark);
+        const editFormForPark = getParkEditForm(parkToEdit);
+        addParkEditForm(editFormForPark, parkId)
+
+        document.querySelectorAll(".update").forEach(btn => {
+            btn.addEventListener("click", handleUpdate);
+        });
     });
+
 };
 
 const handleUpdate = () => {
