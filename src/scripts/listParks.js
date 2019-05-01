@@ -3,6 +3,7 @@ const listNationalParks = () => {
     .then(parksArray => {
       console.log("parksArray", parksArray);
 
+      clearHtml();
       parksArray.forEach(park => {
         const parkHtml = buildParkHtml(park);
         addToParkContainer(parkHtml, park.id);

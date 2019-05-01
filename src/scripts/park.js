@@ -33,3 +33,7 @@ const addParkEditForm = (formString, parkId) => {
     const parkArticle = document.querySelector(`#national-park--${parkId}`);
     parkArticle.innerHTML = formString;
 }
+
+const clearHtml = () => {
+    $container.innerHTML = "";
+}
