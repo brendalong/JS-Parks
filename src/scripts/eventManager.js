@@ -1,20 +1,20 @@
 const handleDelete = () => {
-  let parkId = event.target.parentNode.id.split("--")[1];
+    let parkId = event.target.parentNode.id.split("--")[1];
 
-  deletePark(parkId).then(() => listNationalParks());
+    deletePark(parkId).then(() => listNationalParks());
 };
 
 const handleVisited = () => {
     console.log("visited button clicked", event.target.id.split("--")[1]);
 
     let parkId = event.target.id.split("--")[1];
-        console.log("park", parkId);
+    console.log("park", parkId);
     let visitedParkObject = {
         visited: true
     };
 
     patchPark(parkId, visitedParkObject)
-    .then(() => listNationalParks());
+        .then(() => listNationalParks());
 };
 
 
